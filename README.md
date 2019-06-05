@@ -17,12 +17,6 @@ I think that this code is quite extensible, for example:
 
 ## Test
 
-Execute 'gradlew test' to run tests.
+Execute 'mvn clean test' to run tests.
 
-## TODO
-- Provide a option to switch to another weapon.
-- Acquire Guns and Ammo's from enemy once they are killed.
-- Time based game play.
-- Add unit tests
-- Handling different difficulty levels with sensible defaults.
-- Improve the game play with proper names of character and more story description.
+

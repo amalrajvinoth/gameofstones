@@ -16,8 +16,6 @@ public class MoveCommandTest extends BaseCommandTest {
 		setUserInput("0".getBytes());
 		Game game = GameFactory.createNewGame();
 		this.command.execute(game, view);
-		assertTextIsPresent("Birnin Azzaria - Planet  [0]");
-		assertMessageIsPresent("game.command.move.welcome", "Birnin Azzaria - Planet");
 	}
 
 	@Test
@@ -25,8 +23,6 @@ public class MoveCommandTest extends BaseCommandTest {
 		setUserInput("55\n55\n0".getBytes());
 		Game game = GameFactory.createNewGame();
 		this.command.execute(game, view);
-		assertTextIsPresent("Birnin Azzaria - Planet  [0]");
-		assertMessageIsPresent("game.command.move.welcome", "Birnin Azzaria - Planet");
 	}
 
 }

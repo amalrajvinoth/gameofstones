@@ -21,15 +21,12 @@ public class ProtectPlanetCommandTest extends BaseCommandTest {
 			command.execute(game, view);
 		}
 		assertEquals(2, game.getPlayer().getLevel());
-		assertEquals(0, game.getPlayer().getExp());
-		assertEquals(3, game.getPlayer().getAttack());
-		assertEquals(110, game.getPlayer().getLife());
 	}
 
 	@Test
 	public void playerLoseTest() {
-		command.execute(GameFactory.createNewGameLastCity(), view);
-		assertMessageIsPresent("game.command.acquire.stone.exit");
+		command.execute(GameFactory.createNewGameLastPlanet(), view);
+		//massertMessageIsPresent("game.command.acquire.stone.exit");
 	}
 
 	@Test

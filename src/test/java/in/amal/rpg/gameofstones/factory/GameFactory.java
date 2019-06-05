@@ -12,7 +12,7 @@ public class GameFactory {
         return newGame;
     }
 
-    public static Game createNewGameLastCity() {
+    public static Game createNewGameLastPlanet() {
         Game newGame = new Game(UUID.randomUUID().toString());
         newGame.setCurrentPlanet(new Earth());
         return newGame;

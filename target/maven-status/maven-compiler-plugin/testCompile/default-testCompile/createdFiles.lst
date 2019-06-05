@@ -1,0 +1,17 @@
+in/amal/rpg/gameofstones/controller/commands/BaseCommandTest.class
+in/amal/rpg/gameofstones/controller/StartGameControllerTest.class
+in/amal/rpg/gameofstones/view/BasicViewTest.class
+in/amal/rpg/gameofstones/controller/commands/ExitCommandTest.class
+in/amal/rpg/gameofstones/model/ASCIIArtTest.class
+in/amal/rpg/gameofstones/controller/BaseControllerTest.class
+in/amal/rpg/gameofstones/controller/LoadOrStartNewGameControllerTest.class
+in/amal/rpg/gameofstones/controller/util/MessagesUtilsTest.class
+in/amal/rpg/gameofstones/model/StorageTest.class
+in/amal/rpg/gameofstones/BaseTest.class
+in/amal/rpg/gameofstones/controller/commands/SaveCommandTest.class
+in/amal/rpg/gameofstones/controller/commands/MoveCommandTest.class
+in/amal/rpg/gameofstones/ProjectAcceptanceCriteria.class
+in/amal/rpg/gameofstones/controller/commands/ProtectPlanetCommandTest.class
+in/amal/rpg/gameofstones/controller/RunCommandControllerTest.class
+in/amal/rpg/gameofstones/factory/GameFactory.class
+in/amal/rpg/gameofstones/controller/commands/ListCommandsTest.class
