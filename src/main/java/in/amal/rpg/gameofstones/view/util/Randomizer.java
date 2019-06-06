@@ -1,6 +1,6 @@
 package in.amal.rpg.gameofstones.view.util;
 
-import in.amal.rpg.gameofstones.model.BaseCharactor;
+import in.amal.rpg.gameofstones.model.BaseCharacter;
 import in.amal.rpg.gameofstones.model.Game;
 import in.amal.rpg.gameofstones.model.avengers.*;
 import in.amal.rpg.gameofstones.model.planets.*;
@@ -11,11 +11,11 @@ import java.util.*;
 
 public class Randomizer {
 
-    private static final List<BaseCharactor> AVENGERS = Arrays.asList(new IronMan(), new CaptainAmerica(), new CaptainMarvel(), new Thor(),
+    private static final List<BaseCharacter> AVENGERS = Arrays.asList(new IronMan(), new CaptainAmerica(), new CaptainMarvel(), new Thor(),
             new Hulk(), new BlackWidow(), new BlackPanther(), new SpiderMan(), new DoctorStrange(), new WinterSoldier());
 
-    private static final List<BaseVillain> VILLAINS = Arrays.asList(new Thanos(), new BlackOrder(), new Ultron(), new RedSkull(),
-            new ScarletWitch(), new Hela(), new Loki(), new Ronan(), new Nebula(), new WinterSoldier());
+    private static final Set<BaseVillain> VILLAINS = new TreeSet<>(Arrays.asList(new Thanos(), new BlackOrder(), new Ultron(), new RedSkull(),
+            new ScarletWitch(), new Hela(), new Loki(), new Ronan(), new Nebula(), new WinterSoldier()));
 
     private static final List<Planet> PLANETS = Arrays.asList(new Asgard(), new Earth(), new Ego(), new Knowhere(),
             new Nidavellir(), new Sokovia(), new Titan(), new Vormir(), new ZenWhoberi(), new Xandar());
@@ -54,7 +54,9 @@ public class Randomizer {
         List newList = new ArrayList<>();
         for (int i = 0; i < totalItems; i++) {
             int randomIndex = rand.nextInt(VILLAINS.size());
-            newList.add(VILLAINS.get(randomIndex));
+            List<BaseVillain> asList = new ArrayList<>(VILLAINS);
+            Collections.shuffle(asList);
+            newList.add(asList.get(randomIndex));
         }
         return newList;
     }
@@ -72,7 +74,7 @@ public class Randomizer {
     public static Player getRandomAvenger(Player player) {
         Random rand = new Random();
         int randomIndex = rand.nextInt(AVENGERS.size());
-        BaseCharactor character = AVENGERS.get(randomIndex);
+        BaseCharacter character = AVENGERS.get(randomIndex);
         player.change(character.getAttack(), character.getExp(), character.getLife());
         return player;
     }
@@ -81,5 +83,9 @@ public class Randomizer {
         Random rand = new Random();
         int randomIndex = rand.nextInt(STONES.size());
         return STONES.get(randomIndex);
+    }
+
+    public static boolean allExplored(List<Planet> exploredPlanets) {
+        return PLANETS.stream().allMatch(exploredPlanets::contains);
     }
 }

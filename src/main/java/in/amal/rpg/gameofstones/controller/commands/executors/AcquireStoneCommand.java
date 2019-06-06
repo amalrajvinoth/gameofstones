@@ -2,8 +2,7 @@ package in.amal.rpg.gameofstones.controller.commands.executors;
 
 import in.amal.rpg.gameofstones.controller.commands.Command;
 import in.amal.rpg.gameofstones.controller.commands.Commands;
-import in.amal.rpg.gameofstones.model.ASCIIArt;
-import in.amal.rpg.gameofstones.model.BaseCharactor;
+import in.amal.rpg.gameofstones.model.BaseCharacter;
 import in.amal.rpg.gameofstones.model.Game;
 import in.amal.rpg.gameofstones.model.avengers.Player;
 import in.amal.rpg.gameofstones.model.villains.BaseVillain;
@@ -15,7 +14,7 @@ import java.util.Random;
 public class AcquireStoneCommand implements Command {
     private Random random = new Random();
 
-    private void attack(BaseCharactor attacker, BaseCharactor defender, BasicView view) {
+    private void attack(BaseCharacter attacker, BaseCharacter defender, BasicView view) {
         boolean attackBlocked = random.nextBoolean();
         if (attackBlocked) {
             view.printMessage("game.command.acquire.stone.attack.blocked", attacker.getName());
@@ -26,7 +25,7 @@ public class AcquireStoneCommand implements Command {
         }
     }
 
-    private void computeExperience(Player player, BaseCharactor villain, BasicView view) {
+    private void computeExperience(Player player, BaseCharacter villain, BasicView view) {
         boolean levelUp = player.addExperience(villain);
         if (levelUp) {
             if(player.getGame().getCurrentPlanet().isStoneExist()) {
@@ -51,11 +50,13 @@ public class AcquireStoneCommand implements Command {
         view.printMessage("game.command.acquire.stone");
         view.printText(villain.describe());
         view.printMessage("game.command.protect.start");
-        BaseCharactor winner = fight(player, villain, view);
+        BaseCharacter winner = fight(player, villain, view);
         view.printMessage("game.command.protect.end");
         if (winner instanceof Player) {
             computeExperience(player, villain, view);
+            player.setStatus(1);
         } else {
+            player.setStatus(0);
             exitGame(game, view);
         }
         villain.restoreLife();
@@ -66,7 +67,7 @@ public class AcquireStoneCommand implements Command {
         Commands.EXIT.getExecuter().execute(game, view);
     }
 
-    private BaseCharactor fight(BaseCharactor player, BaseCharactor villain, BasicView view) {
+    private BaseCharacter fight(BaseCharacter player, BaseCharacter villain, BasicView view) {
         while (villain.isAlive() && player.isAlive()) {
             attack(player, villain, view);
             attack(villain, player, view);

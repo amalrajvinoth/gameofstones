@@ -6,16 +6,14 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class BaseCharactor implements Serializable {
-    private static final long serialVersionUID = -5407283321466867599L;
-
+public abstract class BaseCharacter implements Serializable {
     protected int attack;
     protected int baseLife;
     protected int exp;
     protected int life;
     protected String name;
 
-    public BaseCharactor(String name, int attack, int exp, int baseLife) {
+    public BaseCharacter(String name, int attack, int exp, int baseLife) {
         super();
         this.attack = attack;
         this.exp = exp;
@@ -24,7 +22,7 @@ public abstract class BaseCharactor implements Serializable {
         this.name = name;
     }
 
-    public void attacked(BaseCharactor attacker) {
+    public void attacked(BaseCharacter attacker) {
         this.life -= attacker.getAttack();
         if (life < 0) {
             this.life = 0;

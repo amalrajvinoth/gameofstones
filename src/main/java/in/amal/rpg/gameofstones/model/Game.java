@@ -10,7 +10,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Game implements Serializable {
 
-    private static final long serialVersionUID = -1459703123591010134L;
     private Planet currentPlanet;
     private final Integer id;
     private Player player;
@@ -41,10 +40,6 @@ public class Game implements Serializable {
 
     public Planet getCurrentPlanet() {
         return this.currentPlanet;
-    }
-
-    public Integer getId() {
-        return this.id;
     }
 
     public Player getPlayer() {

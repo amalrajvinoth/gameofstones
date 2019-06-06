@@ -5,8 +5,6 @@ import in.amal.rpg.gameofstones.model.stones.TimeStone;
 
 public class Earth extends BasePlanet {
 
-    private static final long serialVersionUID = 408533625039036568L;
-
     public Earth() {
         super("Earth", "Planet");
         this.stones.add(new MindStone());

@@ -3,8 +3,6 @@ package in.amal.rpg.gameofstones.model.planets;
 import java.io.Serializable;
 import java.util.List;
 
-import in.amal.rpg.gameofstones.model.BaseCharactor;
-import in.amal.rpg.gameofstones.model.avengers.BaseAvenger;
 import in.amal.rpg.gameofstones.model.stones.BaseStone;
 import in.amal.rpg.gameofstones.model.villains.BaseVillain;
 
@@ -29,5 +27,9 @@ public interface Planet extends Serializable {
 	Planet recoverNearPlanetByIndex(int id);
 
 	boolean isStoneExist();
+
+	void setExplored(boolean explored);
+
+	boolean isExplored();
 
 }

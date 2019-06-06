@@ -4,13 +4,10 @@ import in.amal.rpg.gameofstones.model.stones.BaseStone;
 import in.amal.rpg.gameofstones.view.util.MessagesUtils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Gauntlet implements Serializable {
-    private Collection<BaseStone> stones = new ArrayList<>();
+    private Collection<BaseStone> stones = new LinkedHashSet<>();
 
     public void addStone(BaseStone stone) {
         this.stones.add(stone);

@@ -1,9 +1,9 @@
 package in.amal.rpg.gameofstones.model.avengers;
 
-import in.amal.rpg.gameofstones.model.BaseCharactor;
+import in.amal.rpg.gameofstones.model.BaseCharacter;
 import in.amal.rpg.gameofstones.model.Game;
 
-public abstract class BaseAvenger extends BaseCharactor {
+public abstract class BaseAvenger extends BaseCharacter {
 
     protected Game game;
 

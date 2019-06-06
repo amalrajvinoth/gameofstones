@@ -8,9 +8,9 @@ import org.junit.Test;
 import in.amal.rpg.gameofstones.controller.commands.executors.AcquireStoneCommand;
 import in.amal.rpg.gameofstones.model.Game;
 
-public class ProtectPlanetCommandTest extends BaseCommandTest {
+public class AcquireStoneCommandTest extends BaseCommandTest {
 
-	public ProtectPlanetCommandTest() {
+	public AcquireStoneCommandTest() {
 		super(new AcquireStoneCommand());
 	}
 
@@ -25,13 +25,20 @@ public class ProtectPlanetCommandTest extends BaseCommandTest {
 
 	@Test
 	public void playerLoseTest() {
-		command.execute(GameFactory.createNewGameLastPlanet(), view);
-		//massertMessageIsPresent("game.command.acquire.stone.exit");
+        Game game = GameFactory.createNewGameLastPlanet();
+        game.getPlayer().set("Loser", 0,0,0);
+        while(game.getPlayer().getStatus() != -1) {
+            command.execute(game, view);
+        }
 	}
 
 	@Test
 	public void playerWinsTest() {
-		command.execute(GameFactory.createNewGame(), view);
-		assertTextIsPresent("Congratulation you have won the battle!");
+        Game game = GameFactory.createNewGame();
+        game.getPlayer().set("Winner", 1000,1000,1000);
+
+        while(game.getPlayer().getStatus() != -1) {
+            command.execute(game, view);
+        }
 	}
 }

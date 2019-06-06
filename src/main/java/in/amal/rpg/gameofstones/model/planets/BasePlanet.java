@@ -9,8 +9,8 @@ import java.util.Random;
 
 public abstract class BasePlanet implements Planet {
 
-    private static final long serialVersionUID = 5375202366367919309L;
     protected String planetName;
+    protected boolean explored;
     protected String planetType;
     protected List<BaseVillain> villains;
     protected List<Planet> nearByPlanets;
@@ -87,9 +87,21 @@ public abstract class BasePlanet implements Planet {
     public List<String> listNearByPlanets() {
         List<String> texts = new ArrayList<>();
         for (int i = 0; i < nearByPlanets.size(); i++) {
-            texts.add(nearByPlanets.get(i) + "  [" + i + "]");
+            if(!nearByPlanets.get(i).isExplored()) {
+                texts.add(nearByPlanets.get(i) + "  [" + i + "]");
+            }
         }
         return texts;
+    }
+
+    @Override
+    public boolean isExplored() {
+        return explored;
+    }
+
+    @Override
+    public void setExplored(boolean explored) {
+         this.explored = explored;
     }
 
     @Override

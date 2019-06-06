@@ -5,6 +5,7 @@ import static in.amal.rpg.gameofstones.view.util.MessagesUtils.getText;
 import java.util.Optional;
 
 import in.amal.rpg.gameofstones.controller.commands.Command;
+import in.amal.rpg.gameofstones.controller.commands.Commands;
 import in.amal.rpg.gameofstones.model.Game;
 import in.amal.rpg.gameofstones.model.planets.Planet;
 import in.amal.rpg.gameofstones.view.BasicView;
@@ -14,6 +15,9 @@ public class MoveCommand implements Command {
 
 	@Override
 	public void execute(Game game, BasicView view) {
+	    if(game.getPlayer().isAllPlanetsExplored()) {
+            exitGame(game, view);
+        }
 		view.printText(MessagesUtils.getText("game.list.near.by.cities"));
 		Planet currentPhase = game.getCurrentPlanet();
 		view.printText(currentPhase.listNearByPlanets());
@@ -23,5 +27,10 @@ public class MoveCommand implements Command {
 		view.clear();
 		view.printText(getText("game.command.move.welcome", game.getCurrentPlanet()));
 	}
+
+    private void exitGame(Game game, BasicView view) {
+        view.printMessage("game.command.no.planet.explore");
+        Commands.EXIT.getExecuter().execute(game, view);
+    }
 
 }
