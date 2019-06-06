@@ -13,7 +13,7 @@ The code is quite extensible, for example:
 ## Run/Build
 
 - To compile type: mvn package (in the same folder where the pom.xml is)
-- To run type: java -jar target/gameofstones.jar (You must have write permission into the folder you are running gameofstones)
+- To run type: java -jar target/game-of-stones.jar (You must have write permission into the folder you are running gameofstones)
 
 ## Test
 
